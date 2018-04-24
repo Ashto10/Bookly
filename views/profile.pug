@@ -1,0 +1,33 @@
+extends layout
+
+block head
+  title Bookly | Your Profile
+  
+append body
+  .container
+    .error-container
+    h2 Trade requests
+      #trades
+    h2 Your book collection
+      #collection
+      for book in user.ownedBooks
+        .book(data-collection-id=book.book_id)
+          h1= book.title
+          p= book.author
+          img(src=book.coverImg)
+    h2 Location information
+    form(method="POST" action="/profile/modify")
+      label First name
+      input(id="first-name" name="firstName" value=user.userData.firstName)
+      label Last name
+      input(id="last-name" name="lastName" value=user.userData.lastName)
+      label City
+      input(id="city" name="city" value=user.userData.city)
+      label State
+      input(id="state" name="state" value=user.userData.state)
+      button(id="update-profile" type="submit") Update Profile
+      
+    
+    
+block script
+  script( src="/controllers/user.profile.js" type="text/javascript")

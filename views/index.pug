@@ -1,0 +1,19 @@
+extends layout
+
+block head
+  title Bookly | Home
+  
+append body
+  .container
+    .error-container
+    h1 Add book
+    form
+      input(id="title" type="text" name="title" placeholder="title")
+      button(type="button" id="title-search") Search books
+      div#title-list
+      button(type="button" id="submit-book") Add book to collection
+      
+    
+    
+block script
+  script( src="/controllers/user.collection.js" type="text/javascript")
