@@ -9,9 +9,8 @@ var Book = new Schema({
   coverImg: String,
   owner_id: String,
   tradeStatus: {
-    isTradeable: Boolean,
-    borrower_id: String,
-    dateBorrowed: Date
+    isTradeable: String,
+    borrower_id: String
   }
 });
 

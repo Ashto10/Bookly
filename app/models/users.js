@@ -18,11 +18,13 @@ var User = new Schema({
   ownedBooks: [{
     book_id: String,
     title: String,
+    author: String,
     coverImg: String
   }],
   borrowedBooks: [{
     book_id: String,
     title: String,
+    author: String,
     coverImg: String,
     owner_id: String
   }]

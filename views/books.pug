@@ -5,16 +5,12 @@ block head
   
 append body
   .container
-    for book in books
-      h1= book.title
-      p= book.author
-      img(src=book.coverImg)
-      //if book.tradeStatus.isTradeable && book.owner_id !== user._id
-      if book.tradeStatus.isTradeable
-        a(href="/trade/open/" + book._id) Request Trade
-      else
-        span Taken
-    
+    .row
+      for book in books
+        .book-container.col-sm-6.col-md-3
+          if book.tradeStatus.isTradeable === 'CAN_TRADE' && book.owner_id !== user._id.toString()
+            span(data-book-id=book._id).book-trade-icon
+          img(src=book.coverImg).book-cover
     
 block script
-  script( src="/controllers/user.requestBook.js" type="text/javascript")
+  script( src="/controllers/user.collection.js" type="text/javascript")

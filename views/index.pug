@@ -4,16 +4,16 @@ block head
   title Bookly | Home
   
 append body
+  .container-fluid.splash
+    .container
+      p Give a book
+      img(src="https://cdn.glitch.com/e211c2ca-41d7-4cfe-ab59-0e8140bc7200%2F153146-200.png?1524622005914")
+      p Get a book
   .container
-    .error-container
-    h1 Add book
-    form
-      input(id="title" type="text" name="title" placeholder="title")
-      button(type="button" id="title-search") Search books
-      div#title-list
-      button(type="button" id="submit-book") Add book to collection
-      
-    
+    h1 Join for free!
+    ul
+      li Catalogue your book collection
+      li View all the books our users own
+      li Borrow books from other users, and lend out your own
     
 block script
-  script( src="/controllers/user.collection.js" type="text/javascript")
