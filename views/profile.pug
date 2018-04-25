@@ -1,0 +1,43 @@
+extends layout
+
+block head
+  title Bookly | Your Profile
+  
+append body
+  mixin book(bookObject)
+    //.book-container.col-xs-6.col-md-3('data-collection-id'=bookObject.book_id)
+    .book-container.align-top('data-collection-id'=bookObject.book_id)
+      img(src=bookObject.coverImg).book-cover
+      p.book-title= bookObject.title
+      p.book-author= bookObject.author
+  .container
+    .error-container
+    h2 Trade requests
+    #trades
+    h2 Your book collection
+    if user.ownedBooks.length === 0
+      p.headerMessage You have no books in your collection
+    else
+      #collection
+        for bookObject in user.ownedBooks
+          +book(bookObject)
+    h2 Borrowed books
+    if user.borrowedBooks.length === 0
+      p.header-message You haven't borrowed any books
+    else
+      #borrowed
+        for bookObject in user.borrowedBooks
+          +book(bookObject)
+    h2 Add Book
+    form
+      .input-group
+        input(id="title" type="text" name="title" placeholder="title").form-control
+        .input-group-append
+          button(type="button" id="title-search").btn.btn-primary Search books
+      div#title-list
+      button(type="button" id="submit-book").btn.btn-primary Add book to collection
+      
+    
+    
+block script
+  script( src="/controllers/user.profile.js" type="text/javascript")

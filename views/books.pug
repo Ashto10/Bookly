@@ -1,0 +1,16 @@
+extends layout
+
+block head
+  title Bookly | Collection
+  
+append body
+  .container
+    .row
+      for book in books
+        .book-container.col-sm-6.col-md-3
+          if book.tradeStatus.isTradeable === 'CAN_TRADE' && book.owner_id !== user._id.toString()
+            span(data-book-id=book._id).book-trade-icon
+          img(src=book.coverImg).book-cover
+    
+block script
+  script( src="/controllers/user.collection.js" type="text/javascript")

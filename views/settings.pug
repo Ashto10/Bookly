@@ -1,0 +1,37 @@
+extends layout
+
+block head
+  title Bookly | Your Profile
+  
+append body
+  .container
+    h2.text-center Your Profile Information
+    form(method="POST" action="/profile/modify").settings-form
+      .form-group.row
+        label(for="first-name").col-sm-3.col-form-label First name
+        .col-sm-9
+          span.display-text #[=user.userData.firstName]
+          input(id="first-name" name="firstName" value=user.userData.firstName).form-control
+      .form-group.row
+        label(for="last-name").col-sm-3.col-form-label Last name
+        .col-sm-9
+          span.display-text #[=user.userData.lastName]
+          input(id="last-name" name="lastName" value=user.userData.lastName).form-control
+      .form-group.row
+        label(for="city").col-sm-3.col-form-label City
+        .col-sm-9
+          span.display-text #[=user.userData.city]
+          input(id="city" name="city" value=user.userData.city).form-control
+      .form-group.row
+        label(for="state").col-sm-3.col-form-label State
+        .col-sm-9
+          span.display-text #[=user.userData.state]
+          input(id="state" name="state" value=user.userData.state).form-control
+      .buttons-container
+        button(id="enable-update" type="button").btn.btn-primary Change Settings
+        .profile-controls
+          button(id="cancel-update" type="button").btn.btn-danger Cancel
+          button(id="update-profile" type="submit").btn.btn-primary Update Profile        
+      
+block script
+  script( src="/controllers/user.settings.js" type="text/javascript")
